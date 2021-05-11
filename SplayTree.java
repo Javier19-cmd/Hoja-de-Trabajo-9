@@ -2,7 +2,7 @@
  * 
  * @see https://algs4.cs.princeton.edu/33balanced/SplayBST.java.html
  */
-public class SplayTree <Key extends Comparable <Key>, Value>{
+public class SplayTree <Key extends Comparable <Key>, Value> implements TInterfaz<Key, Value>{
     /** Class Node **/
 
   private class Node {
@@ -43,7 +43,25 @@ public class SplayTree <Key extends Comparable <Key>, Value>{
         
             return null;  //En caso de que no exista la llave, se regresa null como valor. 
         } 
-        }      
+    }      
+}
+
+    @Override
+    public void put(Key key, Value valor) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public boolean containsKey(Key key) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public Value getKey(Key key) {
+        // TODO Auto-generated method stub
+        return null;
     }
          
 
