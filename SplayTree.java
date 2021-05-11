@@ -46,20 +46,26 @@ public class SplayTree <Key extends Comparable <Key>, Value> implements TInterfa
     }      
 }
 
+    /**
+     * Método 
+     * @param key llave del valor a ingresar al árbol.
+     * @param value valor a ingresar 
+     * 
+    */
     @Override
-    public void put(Key key, Value valor) {
+    public void put(Key key, Value value) {
         // TODO Auto-generated method stub
         
     }
 
     @Override
-    public boolean containsKey(Key key) {
+    public boolean contains(Key key) {
         // TODO Auto-generated method stub
         return false;
     }
 
     @Override
-    public Value getKey(Key key) {
+    public Value get(Key key) {
         // TODO Auto-generated method stub
         return null;
     }

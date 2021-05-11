@@ -10,7 +10,7 @@
  */
 public interface TInterfaz <Key extends Comparable<Key>, Value>{
      
-    public void put(Key key, Value valor); //Método de tipo void que será el encargado de ingresar los valores al árbol.
-    public boolean containsKey(Key key);   //Método booleano que será el encargado de verificar que cada valor tenga una llave. 
-    public Value getKey(Key key);          //Método de tipo value que será el encargado de obtener la llave del valor.
+    public void put(Key key, Value value); //Método de tipo void que será el encargado de ingresar los valores al árbol.
+    public boolean contains(Key key);   //Método booleano que será el encargado de verificar que cada valor tenga una llave. 
+    public Value get(Key key);          //Método de tipo value que será el encargado de obtener la llave del valor.
 }
