@@ -23,23 +23,9 @@ public class SplayTree <Key extends Comparable <Key>, Value> implements TInterfa
         this.value = value;
     }
     
-    //Retorno del valor asociado con su correspondiente llave.
-    //Si en caso no existe la llave, entonces se regresa nulo.
-    public Value get(Key key) {
-        root = splay(root, key);
-        
-        int cmp = key.compareTo(root.key); //Verificando la llave.
-        
-        if (cmp == 0){
-        
-            return root.value; //Si en caso existe el valor asociado, entonces se regresa el valor de la llave.
-        } 
-        
-        else{
-        
-            return null;  //En caso de que no exista la llave, se regresa null como valor. 
-        } 
-    }      
+    
+    
+           
 }
 
     /**
@@ -93,11 +79,22 @@ public class SplayTree <Key extends Comparable <Key>, Value> implements TInterfa
         return get(key) != null; //Retornando el valor a buscar.
     }
 
+    //Retorno del valor asociado con su correspondiente llave.
+    //Si en caso no existe la llave, entonces se regresa nulo.
     @Override
     public Value get(Key key) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-         
-
+        root = splay(root, key);
+        
+        int cmp = key.compareTo(root.key); //Verificando la llave.
+        
+        if (cmp == 0){
+        
+            return root.value; //Si en caso existe el valor asociado, entonces se regresa el valor de la llave.
+        } 
+        
+        else{
+        
+            return null;  //En caso de que no exista la llave, se regresa null como valor. 
+        } 
+    }   
 }
