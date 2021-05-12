@@ -22,10 +22,7 @@ public class SplayTree <Key extends Comparable <Key>, Value> implements TInterfa
         this.key   = key;
         this.value = value;
     }
-    
-    
-    
-           
+               
 }
 
     /**
@@ -96,5 +93,115 @@ public class SplayTree <Key extends Comparable <Key>, Value> implements TInterfa
         
             return null;  //En caso de que no exista la llave, se regresa null como valor. 
         } 
-    }   
+    } 
+    
+    private Node splay(Node h, Key key) {
+    
+       //Si en caso la llave está vacía, entonces se regresa nulo.
+       if (h == null){
+          return null;
+       } 
+
+        int cmp1 = key.compareTo(h.key);
+
+        if (cmp1 < 0) {
+            
+            //En este caso, la llave no está en el árbol, entonces se regresa la llave en sí.
+            if (h.left == null) {
+                return h;
+            }
+            int cmp2 = key.compareTo(h.left.key);
+            if (cmp2 < 0) {
+                //Realizando rotación hacia la derecha para poder acomodar el árbol.
+                h.left.left = splay(h.left.left, key);
+                h = rotateRight(h);
+            }
+            else if (cmp2 > 0) {
+                h.left.right = splay(h.left.right, key);
+                if (h.left.right != null){
+                    //En caso de que tanto las ramas izquierda como derecha estén llenas, se hace una rotación hacia la izquierda.
+                    h.left = rotateLeft(h.left);
+                }
+            }
+            
+            //Si en caso la izquierda está nula, entonces se regresa el nodo. 
+            if (h.left == null) {
+                return h;
+            }else{ //Si en caso no está vacía, se rota hacia la derecha.
+                return rotateRight(h);
+            }                
+        }
+
+        else if (cmp1 > 0) { 
+            //Si la comparación resultó ser mayor a 1, entonces la llave no está en el árbol.
+            if (h.right == null) {
+                return h;
+            }
+
+            int cmp2 = key.compareTo(h.right.key);
+            if (cmp2 < 0) {
+                h.right.left  = splay(h.right.left, key);
+                if (h.right.left != null){ //Si en caso las ramas izquierda y derecha no están vacías, entonces se hace una rotación hacia la derecha.
+                    h.right = rotateRight(h.right);
+                }
+                    
+            }
+            else if (cmp2 > 0) {//Si en caso la comparación es mayor a 0, entonces se hace una rotación hacia la izquierda.
+                h.right.right = splay(h.right.right, key);
+                h = rotateLeft(h);
+            }
+            
+            if (h.right == null) { //Si en caso el nodo está vacío, entonces se regresa dicho nodo.
+                return h;
+            
+            }else{ //En caso de no estar nulo, se hace una rotación hacia la izquierda.
+
+                return rotateLeft(h);
+            }
+        }
+
+        else return h;
+    }
+
+    
+    //Método para devolver la altura del árbol: este retorna la raíz del mismo.
+    public int height() { 
+        
+        return height(root); 
+    
+    }
+
+    //Método de tipo int que se encarga de medir la altura del árbol.
+    private int height(Node x) {
+        if (x == null) return -1;
+        return 1 + Math.max(height(x.left), height(x.right));
+    }
+
+    //Método que se encarga de devolver el tamaño del árbol.
+    public int size() {
+        return size(root);
+    }
+    
+    //Método de tipo entero que se encarga de medir el tamaño en si del árbol.
+    private int size(Node x) {
+        if (x == null) return 0;
+        else return 1 + size(x.left) + size(x.right);
+    }
+    
+    // Método encargado de hacer la rotación del árbol hacia la derecha. 
+    private Node rotateRight(Node h) {
+        Node x = h.left;
+        h.left = x.right;
+        x.right = h;
+        return x;
+    }
+
+    //  Método que se encarga de hacer la rotación hacia la izquierda del árbol.
+    private Node rotateLeft(Node h) {
+        Node x = h.right;
+        h.right = x.left;
+        x.left = h;
+        return x;
+    }
+    
 }
