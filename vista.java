@@ -69,6 +69,48 @@ static int inic;
                 System.out.println("El archivo no existe en el directorio.");
             }
 
-            
+            //Leyendo el archivo de entrada.......
+            try {
+                //Abriendo el archivo.
+                FileReader leyendo = new FileReader("texto.txt"); 
+                BufferedReader bff = new BufferedReader(leyendo);
+                String Trad; //Puntero del archivo.
+                
+                while((l = bff.readLine()) != null){
+
+                    //Juntando cada línea.
+                    l = l.toLowerCase();
+                    String[] texto = l.split(" "); //Array para almacenar las palabras del enunciado.
+                    Trad = " "; 
+
+                    for(int a = 0; a<texto.length; a++)
+                    {
+                        String pal = texto[a]; //Almacenando las palabras a traducir.
+
+                        //Buscando la palabra que se desea traducir en el árbol.
+                        if(arb.contains(pal)){
+
+                            Trad+=arb.get(pal); //Obteniendo las palabras del diccionario.
+
+                        }else{//Sección para las palabras no traducidas.
+
+                            Trad += ("*"+ pal+"*"); //En caso de que no esté la palabra, se le agrega un asterico para rotularla de no traducirda.
+                        }
+                        
+                    }
+
+                    //Imprimiendo la oración traducida.
+                    System.out.println("\n" + Trad);
+
+                }
+
+                bff.close(); //Cerrando el archivo.
+                
+
+            } catch (IOException ArchivoNoExistente) {
+                //Error al encontrar el archivo de texto.
+                System.out.println("Error al encotrar el archivo........");
+            }
+
     }
 }
