@@ -11,7 +11,7 @@ public class Factory {
         if(ele == 1){
             return new SplayTree<>(); //Implementación del Splay Tree. 
         }else{
-            return new SplayTree<>();//Agregar la segunda implementación del árbol.
+            return new HashMap<>();//Implementación del HashMap.
         }
    }
 }
