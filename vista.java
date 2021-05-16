@@ -22,7 +22,7 @@ static int inic;
         System.out.println("Bienvenido al traductor......");
         System.out.println("¿Qué implementación desea utilizar?");
         System.out.println("1. SplayTree");
-        System.out.println("2.");//Agregar la segunda implementación.
+        System.out.println("2. HashMap");//Agregar la segunda implementación.
         System.out.println("3. Salir");
 
             //Progra defensiva.
